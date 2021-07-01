@@ -18,7 +18,13 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
       // 浏览器自动打开
       open: true,
       // 本地跨域代理
-      proxy: {},
+      proxy: {
+        "/test": {
+          target: 'http://stzbxinghe.com/stzbxinghe/php/',
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/test/, '')
+        }
+      },
     },
     plugins: [vue()]
   }
