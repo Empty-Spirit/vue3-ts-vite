@@ -4,6 +4,10 @@
 
 所以此架子是在 vite 的基础上做了一些常用依赖的安装
 
+目前已经引入的依赖有 vuex vue-router less axios
+
+并在 axios 的基础上，进行了一些封装和跨域代理
+
 # yarn
 
 安装依赖，可通过 yarn add 安装所需要但是没有的依赖,也可以通过 yarn remove 移除不需要的依赖
