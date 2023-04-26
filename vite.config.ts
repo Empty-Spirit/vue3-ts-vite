@@ -1,10 +1,12 @@
-import { ConfigEnv, UserConfigExport } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-const resolve = require("path")
+// 自动引入vue相关函数
+import AutoImport from 'unplugin-auto-import/vite'
+
+const path = require("path")
 
 // https://vitejs.dev/config/
-export default ({ command }: ConfigEnv): UserConfigExport => {
-  return {
+export default defineConfig({
     server: {
       // 是否开启 https
       https: false,
@@ -26,6 +28,17 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
         }
       },
     },
-    plugins: [vue()]
-  }
-}
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+        '*': path.resolve('')
+      }
+    },
+    plugins: [
+      vue(),
+      AutoImport({
+        imports:['vue', 'vue-router', 'vuex'],
+      }),
+    ],
+    base:'./'
+  })

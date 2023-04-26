@@ -15,4 +15,12 @@ const index = createRouter({
   routes
 })
 
+// 路由拦截
+index.beforeEach((to, from, next) => {
+  // store.commit('changeActiveIndex', iconMap[to.path]);
+  // store.commit('changeRule', to.path);
+  // store.commit('delTip', iconMap[to.path])
+  next();
+})
+
 export default index;

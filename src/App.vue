@@ -2,27 +2,18 @@
   <router-view />
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import { useStore } from "vuex";
-import { useRouter, useRoute } from "vue-router";
-import api from "./config/api";
+<script setup lang="ts">
+  import api from "./config/api";
 
-export default defineComponent({
-  name: "App",
-  setup() {
-    let router = useRouter();
-    let route = useRoute();
-    let store = useStore();
-    let params = {};
-    api.user.login(params).then(res => {
-      console.log(res, "dddd");
-    });
-    console.log(router.push, route.query, store);
-    console.log(process.env.NODE_ENV);
-    return {};
-  },
-});
+  let router = useRouter();
+  let route = useRoute();
+  let store = useStore();
+  let params = {};
+  api.user.login(params).then(res => {
+    console.log(res, "dddd");
+  });
+  console.log(router.push, route.query, store);
+  console.log(process.env.NODE_ENV);
 </script>
 
 <style>
